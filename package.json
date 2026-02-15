@@ -1,0 +1,25 @@
+{
+  "name": "mini-message-board",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/fromscode/mini-message-board#readme",
+  "bugs": {
+    "url": "https://github.com/fromscode/mini-message-board/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fromscode/mini-message-board.git"
+  },
+  "license": "ISC",
+  "author": "fromscode",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node --watch app.js"
+  },
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}
