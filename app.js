@@ -1,14 +1,14 @@
-const Express = require("express");
+const express = require("express");
 const indexRouter = require("./router/index");
 const newRouter = require("./router/new");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 const path = require("node:path");
 
-const app = Express();
+const app = express();
 
 const assetsPath = path.join(__dirname, "public");
-app.use(Express.static(assetsPath));
+app.use(express.static(assetsPath));
 
 app.use("/", indexRouter);
 app.use("/new", newRouter);
