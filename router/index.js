@@ -34,4 +34,9 @@ router.post("/new", (req, res) => {
     res.redirect("/");
 });
 
+router.get("/message:messageIndex", (req, res) => {
+    const message = messages[+req.params.messageIndex];
+    res.render("message", { message: message });
+});
+
 module.exports = router;

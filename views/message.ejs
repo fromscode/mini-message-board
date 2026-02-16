@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+
+    <body>
+            <div>
+                Message Author: 
+                <%- message.user %>
+            </div>
+            <div>
+                Message text: 
+                <%- message.text %>
+            </div>
+            <div>
+                Message time:
+                <%- message.added.toString() %>
+            </div>
+            <br>
+    </body>
+</html>

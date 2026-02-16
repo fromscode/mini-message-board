@@ -5,7 +5,7 @@
     </head>
 
     <body>
-        <% messages.forEach(message => { %>
+        <% messages.forEach((message, index) => { %>
             <div>
                 <%- message.text %>
             </div>
@@ -15,8 +15,9 @@
             <div>
                 <%- message.added.toDateString() %>
             </div>
+            <a href= <%- `/message${index}` %> ><button type="button">Open</button></a>    
         <% }) %>
-
+            <br>
         <a href="/new"><button type="button">New Message</button></a>
     </body>
 </html>
