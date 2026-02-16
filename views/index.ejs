@@ -1,23 +1,46 @@
 <html>
     <head>
         <title>Home Page</title>
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./output.css">
     </head>
 
-    <body>
-        <% messages.forEach((message, index) => { %>
-            <div>
-                <%- message.text %>
-            </div>
-            <div>
-                <%- message.user %>
-            </div>
-            <div>
-                <%- message.added.toDateString() %>
-            </div>
-            <a href= <%- `/message${index}` %> ><button type="button">Open</button></a>    
-        <% }) %>
-            <br>
-        <a href="/new"><button type="button">New Message</button></a>
+    <body class="flex justify-center items-center h-screen font-serif 
+    bg-slate-300">
+        <div class="flex flex-col mb-64 border-2 rounded-xl border-slate-900 
+        bg-gray-50 w-2xl">
+        <div class="p-2">
+            <% messages.forEach((message, index) => { %>
+                <div class="mb-4 last:mb-0">
+                    <div class="flex justify-start">
+                        <div class="bg-slate-800 
+                            text-white rounded-full h-12 px-5 
+                            flex justify-end items-center
+                            text-lg w-fit">
+                        <%- message.text %>
+                        </div>
+                    </div>
+                    <div class="flex px-2 text-gray-800 items-center">
+                        <div>
+                            <%- message.user %>
+                        </div>
+                        <div class="mx-1.5 h-1.5 w-1.5 bg-gray-500 rounded-full"></div>
+                        <div>
+                            <%- message.added.toDateString() %>
+                        </div>
+                        <div class="mx-1.5 h-1.5 w-1.5 bg-gray-500 rounded-full"></div>
+                        <a href=<%- `/message${index}`%> 
+                            class="hover:underline cursor-pointer">Open</a>    
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="bg-slate-200 rounded-b-xl flex justify-center">
+            <a href="/new"
+            class="m-2">
+                <button type="button" class="bg-violet-950 text-white
+                hover:bg-indigo-900 hover:underline cursor-pointer
+                rounded-lg p-3">New Message</button></a>
+        </div>
+        </div>
     </body>
 </html>
