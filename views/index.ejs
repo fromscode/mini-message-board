@@ -5,6 +5,16 @@
     </head>
 
     <body>
-        This is index page
+        <% messages.forEach(message => { %>
+            <div>
+                <%- message.text %>
+            </div>
+            <div>
+                <%- message.user %>
+            </div>
+            <div>
+                <%- message.added.toDateString() %>
+            </div>
+        <% }) %>
     </body>
 </html>
