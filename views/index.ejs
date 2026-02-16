@@ -4,11 +4,12 @@
         <link rel="stylesheet" href="./output.css">
     </head>
 
-    <body class="flex justify-center items-center h-screen font-serif 
-    bg-slate-300">
-        <div class="flex flex-col mb-64 border-2 rounded-xl border-slate-900 
-        bg-gray-50 w-2xl">
-        <div class="p-2">
+    <body class="h-screen font-serif 
+    bg-slate-300 flex flex-col justify-center items-center overflow-hidden">
+    <div class="grow w-full"></div>
+        <div class="flex-initial flex flex-col border-2 rounded-xl border-slate-900 
+        bg-gray-50 w-2xl max-h-[calc(100vh-5rem)] overflow-hidden">
+        <div class="p-2 overflow-y-auto">
             <% messages.forEach((message, index) => { %>
                 <div class="mb-4 last:mb-0">
                     <div class="flex justify-start">
@@ -42,5 +43,6 @@
                 rounded-lg p-3">New Message</button></a>
         </div>
         </div>
+        <div class="grow-2 w-full"></div>
     </body>
 </html>
