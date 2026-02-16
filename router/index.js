@@ -18,4 +18,8 @@ router.get("/", (req, res) => {
     res.render("index", { messages: messages });
 });
 
+router.get("/new", (req, res, next) => {
+    res.render("form");
+});
+
 module.exports = router;
