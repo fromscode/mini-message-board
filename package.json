@@ -16,7 +16,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node --watch-path=./routes --watch=app.js app.js"
+    "server": "node --watch-path=./views --watch=app.js app.js"
   },
   "dependencies": {
     "ejs": "^4.0.1",

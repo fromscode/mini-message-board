@@ -11,6 +11,9 @@ app.use("/new", newRouter);
 app.use(notFound);
 app.use(errorHandler);
 
+app.set("views", "./views");
+app.set("view engine", "ejs");
+
 app.listen(3000, (err) => {
     if (err) {
         console.error(err.message);
