@@ -4,8 +4,16 @@
         <link rel="stylesheet" href="./output.css">
     </head>
 
-    <body>
-        <%- err.message %>
-        <a href="/"><button type="button">Back to Home page</button></a>
+    <body class="font-serif bg-red-300 flex justify-center items-center">
+        <div class="mb-64">
+            <div class="text-3xl flex justify-center">
+                <%- err.message %>
+            </div>
+            
+            <div class="flex justify-center">
+                <a href="/" class="text-lg text-gray-700 hover:underline">Back to Home page</a>
+            </div>
+
+        </div>
     </body>
 </html>
