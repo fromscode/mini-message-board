@@ -1,6 +1,6 @@
 const Express = require("express");
-const indexRouter = require("./routes/index");
-const newRouter = require("./routes/new");
+const indexRouter = require("./router/index");
+const newRouter = require("./router/new");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
