@@ -8,6 +8,7 @@ const app = express();
 
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", router);
 app.use(notFound);
