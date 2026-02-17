@@ -19,10 +19,10 @@ app.set("view engine", "ejs");
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, (err) => {
+app.listen(PORT, "0.0.0.0", (err) => {
     if (err) {
         console.error(err.message);
     } else {
-        console.log("Server up and running at port 3000");
+        console.log(`Server up and running at port ${PORT}`);
     }
 });

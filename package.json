@@ -16,7 +16,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node --watch-path=./views --watch=app.js app.js"
+    "start": "node --watch-path=./views --watch=app.js app.js"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
