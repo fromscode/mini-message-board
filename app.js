@@ -17,7 +17,9 @@ app.use(errorHandler);
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-app.listen(3000, (err) => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, (err) => {
     if (err) {
         console.error(err.message);
     } else {
