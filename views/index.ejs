@@ -17,16 +17,16 @@
                             text-white rounded-full h-12 px-5 
                             flex justify-end items-center
                             text-lg w-fit">
-                        <%- message.text %>
+                        <%- message.message %>
                         </div>
                     </div>
                     <div class="flex px-2 text-gray-800 items-center">
                         <div>
-                            <%- message.user %>
+                            <%- message.author %>
                         </div>
                         <div class="mx-1.5 h-1.5 w-1.5 bg-gray-500 rounded-full"></div>
                         <div>
-                            <%- message.added.toDateString() %>
+                            <%- message.date.toDateString() %>
                         </div>
                         <div class="mx-1.5 h-1.5 w-1.5 bg-gray-500 rounded-full"></div>
                         <a href="<%- `/message${index}`%>" 

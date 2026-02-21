@@ -1,20 +1,9 @@
 const e = require('express');
 const { body, validationResult, matchedData } = require('express-validator')
+const db = require('../db/queries')
 
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-    },
-    {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-    },
-];
-
-exports.getHome = (_, res) => {
+exports.getHome = async (_, res) => {
+    const messages = await db.getMessages();
     res.render("index", { messages: messages });
 }
 
@@ -35,29 +24,31 @@ exports.postNew = [
         .isLength({
             max: 200
         }).withMessage(`Message content ${maxLenMessage}`),
-    (req, res) => {
+    async (req, res) => {
 
         const { errors } = validationResult(req);
         if (errors.length) {
-            console.log(errors);
             res.status(400).render('form', { errors: errors })
             return;
         }
 
         const { author, message } = matchedData(req);
 
-        const newMessage = {
-            text: message,
-            user: author,
-            added: new Date(),
-        };
-
-        messages.push(newMessage);
-
+        await db.addMessage(author, message);
         res.redirect("/");
     }]
 
-exports.getMessage = (req, res) => {
-    const message = messages[+req.params.messageIndex];
-    res.render("message", { message: message });
+exports.getMessage = async (req, res) => {
+    const id = +req.params.messageIndex;
+    const messages = await db.getMessage(id + 1);
+    if (messages.length) {
+        res.render("message", { message: messages[0] });
+        return;
+    }
+
+    res.status(404).render("error", {
+        err: {
+            message: "Oops! We could not find the resource that you were looking for."
+        }
+    });
 }

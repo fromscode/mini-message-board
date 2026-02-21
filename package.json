@@ -16,7 +16,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch-path=./views --watch=app.js app.js",
+    "dev": "node --watch=app.js --env-file=.env app.js",
     "start": "node app.js"
   },
   "dependencies": {
