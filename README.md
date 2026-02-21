@@ -1,6 +1,6 @@
 # mini-message-board
 
-A simple message board (with no persistence) made to learn about express, templating and deploying backend apps on the internet
+A simple message board made to learn about express, templating, database connectivity and deploying backend apps on the internet
 
 Live Link -> [Click Here](https://fromscode-mini-message-board.up.railway.app/)
 
