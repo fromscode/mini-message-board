@@ -1,42 +1,13 @@
 const Express = require("express");
 const router = Express.Router();
+const controller = require('../controllers/indexController')
 
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-    },
-    {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-    },
-];
+router.get("/", controller.getHome);
 
-router.get("/", (req, res) => {
-    res.render("index", { messages: messages });
-});
+router.get("/new", controller.getNew);
 
-router.get("/new", (req, res, next) => {
-    res.render("form");
-});
+router.post("/new", controller.postNew);
 
-router.post("/new", (req, res) => {
-    const newMessage = {
-        text: req.body.message,
-        user: req.body.author,
-        added: new Date(),
-    };
-
-    messages.push(newMessage);
-
-    res.redirect("/");
-});
-
-router.get("/message:messageIndex", (req, res) => {
-    const message = messages[+req.params.messageIndex];
-    res.render("message", { message: message });
-});
+router.get("/message:messageIndex", controller.getMessage);
 
 module.exports = router;
