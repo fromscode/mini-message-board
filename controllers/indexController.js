@@ -1,5 +1,4 @@
-const e = require('express');
-const { body, validationResult, matchedData } = require('express-validator')
+const { body, validationResult, matchedData, query } = require('express-validator')
 const db = require('../db/queries')
 
 exports.getHome = async (_, res) => {
@@ -38,17 +37,32 @@ exports.postNew = [
         res.redirect("/");
     }]
 
-exports.getMessage = async (req, res) => {
-    const id = +req.params.messageIndex;
-    const messages = await db.getMessage(id + 1);
-    if (messages.length) {
-        res.render("message", { message: messages[0] });
-        return;
-    }
+exports.getMessage = [
+    query('index').trim().escape().isInt({
+        min: 0, max: 2_147_483_647
+    }).toInt(),
+    async (req, res) => {
+        const { errors } = validationResult(req);
+        if (errors.length) {
+            res.status(400).render('error', {
+                err: {
+                    message: "Bad request"
+                }
+            })
 
-    res.status(404).render("error", {
-        err: {
-            message: "Oops! We could not find the resource that you were looking for."
+            return;
         }
-    });
-}
+        const { index } = matchedData(req);
+        const id = index + 1;
+        const messages = await db.getMessage(id);
+        if (messages.length) {
+            res.render("message", { message: messages[0] });
+            return;
+        }
+
+        res.status(404).render("error", {
+            err: {
+                message: "Oops! We could not find the resource that you were looking for."
+            }
+        });
+    }]

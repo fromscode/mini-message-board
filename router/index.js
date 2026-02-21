@@ -8,6 +8,6 @@ router.get("/new", controller.getNew);
 
 router.post("/new", controller.postNew);
 
-router.get("/message:messageIndex", controller.getMessage);
+router.get("/message{*splat}", controller.getMessage);
 
 module.exports = router;
