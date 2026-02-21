@@ -1,33 +1,46 @@
 <html>
     <head>
         <title>New Message</title>
-        <link rel="stylesheet" href="/output.css">
+        <link rel="stylesheet" href="/output.css" />
     </head>
 
-    <body class="flex flex-col justify-center items-center h-screen font-serif 
-    bg-slate-300">
-    <div class="w-xl bg-gray-50 border-2 rounded-xl border-slate-900 
-    flex justify-center">
-        <form method="POST" action="/new"
-        class="w-full">
-        <div class="flex gap-2 my-2 mx-10">
-            <label for="author" class="w-16">Author:</label>
-            <input class="border-2 rounded-sm focus:rounded-sm border-gray-700 focus:border-gray-700 pl-1 flex-1
-            text-gray-700" type="text" name="author" id="author">
+    <body
+        class="flex flex-col justify-center items-center h-screen font-serif bg-slate-300"
+    >
+        <div
+            class="w-xl bg-gray-50 border-2 rounded-xl border-slate-900 flex justify-center"
+        >
+            <form method="POST" action="/new" class="w-full">
+                <div class="flex gap-2 my-2 mx-10">
+                    <label for="author" class="w-16">Author:</label>
+                    <input
+                        class="border-2 rounded-sm focus:rounded-sm border-gray-700 focus:border-gray-700 pl-1 flex-1 text-gray-700"
+                        type="text"
+                        name="author"
+                        id="author"
+                    />
+                </div>
+                <div class="flex gap-2 my-2 mx-10">
+                    <label for="message" class="w-16">Message:</label>
+                    <textarea
+                        class="border-2 resize-none pl-1 text-gray-700 flex-1 rounded-sm focus:rounded-sm border-gray-700"
+                        name="message"
+                        id="message"
+                    ></textarea>
+                </div>
+                <div class="bg-slate-200 rounded-b-xl flex justify-center m-0!">
+                    <button
+                        type="submit"
+                        class="bg-violet-950 text-white hover:bg-indigo-900 hover:underline cursor-pointer rounded-lg px-3 py-2 m-1"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="flex gap-2 my-2 mx-10">
-            <label for="message" class="w-16">Message:</label>
-            <textarea class="border-2 resize-none pl-1
-            text-gray-700 flex-1 rounded-sm focus:rounded-sm border-gray-700" name="message" id="message"></textarea>
-        </div>
-        <div class="bg-slate-200 rounded-b-xl flex justify-center m-0!">
-            <button type="submit" class="bg-violet-950 text-white
-            hover:bg-indigo-900 hover:underline cursor-pointer
-            rounded-lg px-3 py-2 m-1">Submit</button>
-        </div>
-        </form>
-        </div>
-        <a href="/" class="mb-64 mt-3 text-gray-700 hover:underline">Back to Home page</a>
-        
+        <a href="/" class="mb-64 mt-3 text-gray-700 hover:underline"
+            >Back to Home page</a
+        >
+        <%- include('validationErrors') %>
     </body>
 </html>

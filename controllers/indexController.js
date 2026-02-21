@@ -1,3 +1,6 @@
+const e = require('express');
+const { body, validationResult, matchedData } = require('express-validator')
+
 const messages = [
     {
         text: "Hi there!",
@@ -19,17 +22,40 @@ exports.getNew = (_, res) => {
     res.render('form');
 }
 
-exports.postNew = (req, res) => {
-    const newMessage = {
-        text: req.body.message,
-        user: req.body.author,
-        added: new Date(),
-    };
+const notEmptyMessage = 'cannot be empty';
+const maxLenMessage = ' cannot exceed 200 characters'
 
-    messages.push(newMessage);
+exports.postNew = [
+    body('author')
+        .trim()
+        .escape()
+        .notEmpty().withMessage(`Author name ${notEmptyMessage}`),
+    body('message').trim().escape()
+        .notEmpty().withMessage(`Message content ${notEmptyMessage}`)
+        .isLength({
+            max: 200
+        }).withMessage(`Message content ${maxLenMessage}`),
+    (req, res) => {
 
-    res.redirect("/");
-}
+        const { errors } = validationResult(req);
+        if (errors.length) {
+            console.log(errors);
+            res.status(400).render('form', { errors: errors })
+            return;
+        }
+
+        const { author, message } = matchedData(req);
+
+        const newMessage = {
+            text: message,
+            user: author,
+            added: new Date(),
+        };
+
+        messages.push(newMessage);
+
+        res.redirect("/");
+    }]
 
 exports.getMessage = (req, res) => {
     const message = messages[+req.params.messageIndex];
